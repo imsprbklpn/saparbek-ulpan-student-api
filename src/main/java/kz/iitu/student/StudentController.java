@@ -25,6 +25,11 @@ public class StudentController {
         return repo.findAll();
     }
 
+    @GetMapping("/api/students/search")
+    public List<Student> search(@RequestParam String lastName) {
+        return repo.findByLastNameIgnoreCase(lastName);
+    }
+
     @GetMapping("/api/students/{id}")
     public Student one(@PathVariable Long id) {
         return repo.findById(id).orElseThrow(() ->
