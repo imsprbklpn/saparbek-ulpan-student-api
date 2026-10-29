@@ -1,0 +1,42 @@
+name: saparbek-ulpan-student-api
+
+services:
+  app:
+    build: .
+    image: saparbek-ulpan-student-api:v1.0-saparbek-ulpan
+    container_name: saparbek-ulpan-student-app
+    ports:
+      - '8081:8081'
+    environment:
+      DB_URL: jdbc:postgresql://db:5432/studentdb
+      DB_USER: student
+      DB_PASSWORD: ${POSTGRES_PASSWORD:-student_pass}
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - student-net
+
+  db:
+    image: postgres:16-alpine
+    container_name: saparbek-ulpan-student-db
+    environment:
+      POSTGRES_DB: studentdb
+      POSTGRES_USER: student
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-student_pass}
+    volumes:
+      - saparbek-ulpan-pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: pg_isready -U student -d studentdb
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    networks:
+      - student-net
+
+volumes:
+  saparbek-ulpan-pgdata:
+
+networks:
+  student-net:
+    name: saparbek-ulpan-net
