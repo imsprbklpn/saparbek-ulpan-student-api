@@ -17,7 +17,7 @@ public class StudentController {
 
     @GetMapping("/")
     public String home() {
-        return "Student API by Ulpan Saparbek, group IT2-2310, ID 37615";
+        return "Student API by Ulpan Saparbek, group IT2-2310, ID 37615, version v1.1";
     }
 
     @GetMapping("/api/students")
