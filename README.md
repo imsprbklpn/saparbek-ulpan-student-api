@@ -7,3 +7,4 @@ Description: REST API for managing students. Search by surname added, documentat
 Automatic build trigger test by Ulpan Saparbek
 Second trigger test by Ulpan Saparbek
 Second trigger test by Ulpan Saparbek
+Second trigger test by Ulpan Saparbek
