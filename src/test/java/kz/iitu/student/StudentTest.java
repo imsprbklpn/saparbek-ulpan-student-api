@@ -9,7 +9,7 @@ class StudentTest {
         Student s = new Student();
         s.setFirstName("Ulpan");
         s.setLastName("Saparbek");
-        assertEquals("Wrong", s.getFirstName());
+        assertEquals("Ulpan", s.getFirstName());
         assertEquals("Saparbek", s.getLastName());
     }
 }
